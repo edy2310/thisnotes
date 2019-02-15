@@ -1,0 +1,47 @@
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.dasboard-main_title{
+    margin: 1em;
+}
+
+.dashboard-container {
+    position: absolute;
+    top: 6.5%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
+  
+.dashboard-navbar{
+    display: flex;
+    justify-content: space-between;
+    .logout-button{
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: white;
+    }
+}
+
+.sidebar-menu{
+    li{
+        list-style-type: none;
+        margin-left: 1em;
+        strong{
+            display: block;
+            border-bottom: white solid 1px;
+            margin-bottom: 1em;
+        }
+        &.last-item{
+            margin-bottom: 1em;
+        }
+    }
+}
+
+.dashboard-main{
+    color: black;
+}

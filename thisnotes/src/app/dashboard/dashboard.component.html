@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">  
+    <mat-toolbar-row class="dashboard-navbar">
+      <span>ThisNotes Dashboard</span>
+      <button (click)="logout()" class="logout-button">
+        <mat-icon >exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<mat-sidenav-container class="dashboard-container" >
+    <mat-sidenav mode="side" opened>
+      <ul class="sidebar-menu">
+        <li><strong>Students</strong></li>
+        <li><a routerLink="./createstudent">Create student</a></li>
+        <li class="last-item"><a routerLink="./managestudents">Manage students</a></li>
+        
+        <li><strong>Announcements</strong></li>
+        <li><a routerLink="./createannounce">Create announce</a></li>
+        <li><a routerLink="./manageannouncements">Manage announcements</a></li>
+      </ul>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="dashboard-main">
+      <h1 class="dasboard-main_title">Bienvenido: </h1>
+        <router-outlet></router-outlet>  
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>

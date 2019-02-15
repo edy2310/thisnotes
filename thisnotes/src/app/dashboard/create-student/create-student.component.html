@@ -1,0 +1,31 @@
+<mat-card class="dashboard-card">
+
+  <h2>Create Student</h2>
+
+  <mat-card-content>
+
+    <form (ngSubmit)="create(formCS)" #formCS="ngForm">
+      <mat-form-field class="field-100">
+        <input matInput placeholder="First Name" ngModel name="first-name" class="input-cs" autocomplete="off" required>
+      </mat-form-field>
+      <mat-form-field class="field-100">
+        <input matInput placeholder="Second Name" ngModel name="second-name" class="input-cs" autocomplete="off" required>
+      </mat-form-field>
+      <mat-form-field class="field-50">
+        <select matNativeControl required ngModel name="level" class="select-cs" placeholder="Level" required [(ngModel)]="level" (change)="selectLevel()">
+          <option value="elementary">Elementary</option>
+          <option value="junior-high-school">Junior High School</option>
+          <option value="high-school">High School</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field class="field-50">
+        <select matNativeControl required ngModel name="grade" class="select-cs" placeholder="Grade">
+          <option *ngFor="let grade of grades"  value="{{grade}}" >{{grade}}</option>
+        </select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Create</button>
+    </form>
+
+  </mat-card-content>
+</mat-card>

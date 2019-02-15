@@ -1,0 +1,32 @@
+<mat-card class="dashboard-card">
+
+    <h2>Create Announce</h2>
+  
+    <mat-card-content>
+  
+      <form (ngSubmit)="create(formCA)" #formCA="ngForm">
+        <mat-form-field class="field-100">
+          <input matInput placeholder="Title" ngModel name="title" class="input-ca" autocomplete="off" required>
+        </mat-form-field>
+        <mat-form-field class="field-100">
+          <textarea matInput placeholder="Content" ngModel name="content" class="input-ca" autocomplete="off" required rows="6"></textarea>
+        </mat-form-field>
+        <mat-form-field class="field-50">
+          <select matNativeControl required ngModel name="level" class="select-cs" placeholder="Level" required [(ngModel)]="level" (change)="selectLevel()">
+            <option value="all">All Levels</option>
+            <option value="elementary">Elementary</option>
+            <option value="junior-high-school">Junior High School</option>
+            <option value="high-school">High School</option>
+          </select>
+        </mat-form-field>
+        <mat-form-field class="field-50">
+          <select matNativeControl required ngModel name="grade" class="select-cs" placeholder="Grade" [disabled]="selectGradeEnabled">
+            <option *ngFor="let grade of grades"  value="{{grade}}" >{{grade}}</option>
+          </select>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit">Create</button>
+      </form>
+  
+    </mat-card-content>
+  </mat-card>
