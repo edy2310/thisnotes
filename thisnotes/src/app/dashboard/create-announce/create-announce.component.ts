@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger } from '@angular/animations';
+import {LoggedCookieService} from '../../_services/logged-cookie.service';
 
 @Component({
   selector: 'app-create-announce',
@@ -16,9 +17,11 @@ export class CreateAnnounceComponent implements OnInit {
 
   public selectGradeEnabled : boolean = false;
 
-  constructor() { }
+  constructor(private _cookieCheck:LoggedCookieService) { }
 
   ngOnInit() {
+    // if(!this._cookieCheck.permitCookie())
+    //   this._router.navigateByUrl("/login")
   }
 
   selectLevel(){

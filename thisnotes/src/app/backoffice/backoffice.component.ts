@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {LoggedCookieService} from '../_services/logged-cookie.service';
+import axios from 'axios';
+import qs from 'qs';
 
 @Component({
   selector: 'app-backoffice',
@@ -16,8 +18,17 @@ export class BackofficeComponent implements OnInit {
       this._router.navigateByUrl("/dashboard")
   }
 
-  public login(e){
+  public async login(e){
     console.log(e.value);
+    let data = e.value;
+    let dataToSend = qs.stringify(data);
+    let response = await axios.post("http://localhost:8080/login", dataToSend, {
+      headers: {
+         'Content-Type': 'application/x-www-form-urlencoded',
+         'Access-Control-Allow-Origin': '*',
+      }
+      });
+      console.log(response.data);
   }
 
 }

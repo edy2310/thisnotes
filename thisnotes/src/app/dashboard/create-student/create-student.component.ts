@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoggedCookieService} from '../../_services/logged-cookie.service';
 
 @Component({
   selector: 'app-create-student',
@@ -13,9 +14,11 @@ export class CreateStudentComponent implements OnInit {
   public grades: number[];
   public level:string;
 
-  constructor() { }
+  constructor(private _cookieCheck:LoggedCookieService) { }
 
   ngOnInit() {
+    // if(!this._cookieCheck.permitCookie())
+    //   this._router.navigateByUrl("/login")
   }
 
   create(e:any){

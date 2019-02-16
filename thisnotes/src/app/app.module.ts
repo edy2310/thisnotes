@@ -11,6 +11,8 @@ import {CreateStudentComponent} from './dashboard/create-student/create-student.
 import { ManageStudentsComponent } from './dashboard/manage-students/manage-students.component';
 import { CreateAnnounceComponent } from './dashboard/create-announce/create-announce.component';
 import { ManageAnnouncementsComponent } from './dashboard/manage-announcements/manage-announcements.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
 
 //Services
 import {LoggedCookieService} from './_services/logged-cookie.service';
@@ -48,7 +50,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     CookieService,
