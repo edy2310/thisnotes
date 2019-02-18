@@ -11,7 +11,15 @@ export class LoggedCookieService {
   constructor(private _cookies:CookieService) { }
 
   permitCookie():boolean{
-    this.loggedCookie = this._cookies.check("permit");
+    this.loggedCookie = this._cookies.check("sessionToken");
     return this.loggedCookie;
+  }
+
+  createCookie(jwt:string):void{
+    this._cookies.set("sessionToken", jwt, 2, "/");
+  }
+
+  deleteCookie():void{
+    this._cookies.delete("sessionToken", "/");
   }
 }

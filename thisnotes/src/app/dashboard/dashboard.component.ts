@@ -10,16 +10,16 @@ import {LoggedCookieService} from '../_services/logged-cookie.service';
 export class DashboardComponent implements OnInit {
 
 
-  constructor(private _router:Router, private _cookieCheck:LoggedCookieService) { }
+  constructor(private _router:Router, private _cookies:LoggedCookieService) { }
 
   ngOnInit() {
-    // if(!this._cookieCheck.permitCookie())
-    //   this._router.navigateByUrl("/login")
+    if(!this._cookies.permitCookie())
+      this._router.navigateByUrl("/login")
   }
 
   logout(){
-    console.log("saliendo");
-    this._router.navigateByUrl("login");
+    this._cookies.deleteCookie();
+    this._router.navigateByUrl("/login");
   }
 
 }
