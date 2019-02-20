@@ -1,10 +1,9 @@
 package com.thisnotes.backend.Repositories;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 
-import com.thisnotes.backend.Models.Admins;
+import com.thisnotes.backend.Models.Admin;
 
-public interface AdminsRepository extends MongoRepository<Admins, String> {
-	Admins findById(ObjectId id);
+public interface AdminsRepository extends CrudRepository<Admin, Integer>{
+
 }

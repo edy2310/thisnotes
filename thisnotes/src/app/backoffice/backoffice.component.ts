@@ -21,7 +21,7 @@ export class BackofficeComponent implements OnInit {
       this._router.navigateByUrl("/dashboard");
   }
 
-  public async login(e){
+  public async login(e:any){
     let data = e.value;
     let dataToSend = qs.stringify(data);
     let response = await axios.post("http://localhost:8080/login", dataToSend, {

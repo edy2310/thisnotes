@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoggedCookieService} from '../../_services/logged-cookie.service';
+import qs from 'qs';
+import axios from 'axios';
 
 @Component({
   selector: 'app-create-student',
@@ -21,13 +23,20 @@ export class CreateStudentComponent implements OnInit {
     //   this._router.navigateByUrl("/login")
   }
 
-  create(e:any){
-    console.log(e.value);
+  async create(e:any){
+    let data = e.value;
+    let dataToSend = qs.stringify(data);
+    let response = await axios.post("http://localhost:8080/student/create", dataToSend, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*',
+     }
+    });
+    console.log(response);
+
   }
 
   selectLevel(){
-    console.log("calling");
-    console.log(this.level);
     if(this.level == "elementary")
       this.grades = this.elementaryGrades;
     else

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger } from '@angular/animations';
 import {LoggedCookieService} from '../../_services/logged-cookie.service';
+import qs from 'qs';
+import axios from 'axios';
 
 @Component({
   selector: 'app-create-announce',
@@ -22,6 +24,18 @@ export class CreateAnnounceComponent implements OnInit {
   ngOnInit() {
     // if(!this._cookieCheck.permitCookie())
     //   this._router.navigateByUrl("/login")
+  }
+
+  async create(e:any){
+    let data = e.value;
+    let dataToSend = qs.stringify(data);
+    let response = await axios.post("http://localhost:8080/announcements/create", dataToSend, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*',
+     }
+    });
+    console.log(response);
   }
 
   selectLevel(){
