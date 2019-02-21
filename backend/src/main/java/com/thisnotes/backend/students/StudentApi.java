@@ -1,5 +1,10 @@
 package com.thisnotes.backend.students;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +25,7 @@ public class StudentApi {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/create")
-	public String createStudent(HttpServletRequest req) {
+	public String createStudent(HttpServletRequest req) throws NoSuchAlgorithmException {
 		String firstName = req.getParameter("first-name");
 		String lastName = req.getParameter("second-name");
 		String level = req.getParameter("level");
@@ -31,11 +36,25 @@ public class StudentApi {
 		newStudent.setLastName(lastName);
 		newStudent.setLevel(level);
 		newStudent.setGrade(grade);
+
+		KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+		keyGen.init(256);
+		SecretKey secretKey = keyGen.generateKey();
+		String newKey = secretKey.toString();
+		System.out.println(newKey + ", " + secretKey);
+		
+		
 		
 		Student savedStudent = repo.save(newStudent);
 		if(savedStudent != null)
 			return "true";
 		else
 			return "false";
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/getall")
+	public List<Student> getAll(){
+		return (List<Student>) repo.findAll();
 	}
 }

@@ -1,8 +1,5 @@
 package com.thisnotes.backend.Models;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,21 +15,18 @@ public class Student {
 	private String lastName;
 	private String level;
 	private String grade;
-	//private List<Float> courseNotes;
-	//private Map<String, List<Float>> courses;
+	private String parentKey;
 		
 	public Student() {}
 
-	public Student(Integer id, String firstName, String lastName, String level, String grade, List<Float> courseNotes,
-			Map<String, List<Float>> courses) {
+	public Student(Integer id, String firstName, String lastName, String level, String grade, String parentKey) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.level = level;
 		this.grade = grade;
-		//this.courseNotes = courseNotes;
-		//this.courses = courses;
+		this.parentKey = parentKey;
 	}
 	
 	public Integer getId() {
@@ -65,17 +59,11 @@ public class Student {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	/*public List<Float> getCourseNotes() {
-		return courseNotes;
+	public String getParentKey() {
+		return parentKey;
 	}
-	public void setCourseNotes(List<Float> courseNotes) {
-		this.courseNotes = courseNotes;
+	public void setParentKey(String parentKey) {
+		this.parentKey = parentKey;
 	}
-	public Map<String, List<Float>> getCourses() {
-		return courses;
-	}
-	public void setCourses(Map<String, List<Float>> courses) {
-		this.courses = courses;
-	} */
 
 }

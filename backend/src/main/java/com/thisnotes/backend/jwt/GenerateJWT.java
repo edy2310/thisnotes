@@ -1,15 +1,12 @@
 package com.thisnotes.backend.jwt;
 
-
-
 import java.io.UnsupportedEncodingException;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 
-public class GenerateJWT {
-	
+public class GenerateJWT {	
 	
 	public static String generate() throws IllegalArgumentException, UnsupportedEncodingException {
 		try {

@@ -39,8 +39,6 @@ export class CreateAnnounceComponent implements OnInit {
   }
 
   selectLevel(){
-    console.log("calling");
-    console.log(this.level);
     if(this.level == "all")
       this.selectGradeEnabled = true;
     else if(this.level == "elementary"){

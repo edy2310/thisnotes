@@ -1,5 +1,7 @@
 package com.thisnotes.backend.announcements;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,13 @@ public class AnnouncementsApi {
 			return "true";
 		else
 			return "false";
+		
+	}
+	
+	@CrossOrigin("http://localhost:4200")
+	@PostMapping("/getall")
+	public List<Announce> getAll() {
+		return (List<Announce>) repo.findAll();
 		
 	}
 }
