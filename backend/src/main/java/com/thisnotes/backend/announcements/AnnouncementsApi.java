@@ -44,7 +44,7 @@ public class AnnouncementsApi {
 	
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/getall")
-	public List<Announce> getAll() {
+	public List<Announce> getAll() {		
 		return (List<Announce>) repo.findAll();
 		
 	}

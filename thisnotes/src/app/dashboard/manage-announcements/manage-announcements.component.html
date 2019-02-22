@@ -1,3 +1,26 @@
-<p>
-  manage-announcements works!
-</p>
+<div class="main-table">
+
+    <div class="mat-elevation-z8">
+        <table>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Content</th>
+              <th>Level</th>
+              <th>Grade</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            <tr *ngFor="let announce of allAnnouncments"> 
+              <td>{{announce.id}}</td>
+              <td>{{announce.title}}</td>
+              <td>{{announce.content}}</td>
+              <td>{{announce.level}}</td>
+              <td>{{announce.grade}}</td>
+              <td><i class="material-icons">cached</i></td>
+              <td><i class="material-icons">delete</i></td>
+            </tr>
+          </table>
+  
+    </div>
+  </div>

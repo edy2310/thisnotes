@@ -2,9 +2,8 @@ package com.thisnotes.backend.students;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Random;
 
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +35,7 @@ public class StudentApi {
 		newStudent.setLastName(lastName);
 		newStudent.setLevel(level);
 		newStudent.setGrade(grade);
-
-		KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-		keyGen.init(256);
-		SecretKey secretKey = keyGen.generateKey();
-		String newKey = secretKey.toString();
-		System.out.println(newKey + ", " + secretKey);
-		
-		
+		newStudent.setParentKey(this.getSaltString());
 		
 		Student savedStudent = repo.save(newStudent);
 		if(savedStudent != null)
@@ -57,4 +49,17 @@ public class StudentApi {
 	public List<Student> getAll(){
 		return (List<Student>) repo.findAll();
 	}
+	
+	protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 12) { 
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
 }
