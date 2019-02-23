@@ -16,6 +16,10 @@ export class CreateStudentComponent implements OnInit {
   public grades: number[];
   public level:string;
 
+  public dashboardAlertStyle:Object;
+  public dashboardAlertMsg:string;
+  public loading:boolean;
+
   constructor(private _cookieCheck:LoggedCookieService) { }
 
   ngOnInit() {
@@ -24,6 +28,7 @@ export class CreateStudentComponent implements OnInit {
   }
 
   async create(e:any){
+    this.loading = true;
     let data = e.value;
     let dataToSend = qs.stringify(data);
     let response = await axios.post("http://localhost:8080/student/create", dataToSend, {
@@ -32,7 +37,35 @@ export class CreateStudentComponent implements OnInit {
         'Access-Control-Allow-Origin': '*',
      }
     });
-    console.log(response);
+    this.loading = false;
+    if(response.data){
+      this.dashboardAlertMsg = "Student saved";
+      this.dashboardAlertStyle = {
+        "opacity" : "1",
+        "margin-top" :  "0",
+        "background-color" : "#3378cc"
+      }
+      setTimeout(() => {
+        this.dashboardAlertStyle ={
+          "opacity" : "0",
+          "margin-top" : "-4em"
+        }
+      }, 1500);
+    }
+    else{
+      this.dashboardAlertMsg = "Problem saving student";
+      this.dashboardAlertStyle = {
+        "opacity" : "1",
+        "margin-top" :  "0",
+        "background-color" : "red"
+      }
+      setTimeout(() => {
+        this.dashboardAlertStyle ={
+          "opacity" : "0",
+          "margin-top" : "-4em"
+        }
+      }, 1500);
+    }
 
   }
 

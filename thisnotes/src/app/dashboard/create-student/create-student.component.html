@@ -29,3 +29,13 @@
 
   </mat-card-content>
 </mat-card>
+
+<mat-card class="dashboard-card dashboard-alert" [ngStyle]="dashboardAlertStyle">
+  <div>
+    {{dashboardAlertMsg}}
+  </div>
+</mat-card>
+
+<div class="loading" *ngIf="loading">
+<img src="/assets/img/loading.gif" alt="Loading">
+</div>

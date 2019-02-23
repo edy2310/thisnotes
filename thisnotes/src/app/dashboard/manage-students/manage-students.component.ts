@@ -9,15 +9,18 @@ import axios from 'axios';
 export class ManageStudentsComponent implements OnInit {
 
   public allStudents:Object[];
+  public loading:boolean;
 
   constructor() {}
 
   ngOnInit() {
+    this.loading = true;
     this.reqData();
   }
 
   async reqData(){
     let resp = await axios.post("http://localhost:8080/student/getall");
     this.allStudents = resp.data;
+    this.loading = false;
   }
 }

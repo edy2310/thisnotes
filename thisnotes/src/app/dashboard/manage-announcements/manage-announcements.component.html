@@ -17,10 +17,13 @@
               <td>{{announce.content}}</td>
               <td>{{announce.level}}</td>
               <td>{{announce.grade}}</td>
-              <td><i class="material-icons">cached</i></td>
-              <td><i class="material-icons">delete</i></td>
+              <td><i class="material-icons" style="color: #3378cc;" (click)="update(announce.id)">cached</i></td>
+              <td><i class="material-icons" style="color: #c22a2a;" (click)="delete(announce.id)">delete</i></td>
             </tr>
           </table>
+          <div class="loading" *ngIf="loading">
+            <img src="/assets/img/loading.gif" alt="Loading">
+          </div>
   
     </div>
   </div>

@@ -19,10 +19,13 @@
             <td>{{student.level}}</td>
             <td>{{student.grade}}</td>
             <td>{{student.parentKey}}</td>
-            <td><i class="material-icons">cached</i></td>
-            <td><i class="material-icons">delete</i></td>
+            <td><i class="material-icons" style="color: #3378cc;">cached</i></td>
+            <td><i class="material-icons" style="color: #c22a2a;">delete</i></td>
           </tr>
         </table>
+        <div class="loading" *ngIf="loading">
+          <img src="/assets/img/loading.gif" alt="Loading">
+        </div>
 
   </div>
 </div>

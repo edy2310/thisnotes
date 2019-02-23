@@ -1,12 +1,17 @@
 package com.thisnotes.backend.announcements;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,8 +49,23 @@ public class AnnouncementsApi {
 	
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/getall")
-	public List<Announce> getAll() {		
+	public List<Announce> getAll() {	
 		return (List<Announce>) repo.findAll();
 		
+	}
+	
+	@CrossOrigin("http://localhost:4200")
+	@PutMapping("/update/{id}")
+	public void update(@PathVariable int id) {
+		Optional<Announce> announceToUpdate = repo.findById(id);
+		Announce newAnnounceToEdit = announceToUpdate.get();
+	}
+	
+	@CrossOrigin("http://localhost:4200")
+	@DeleteMapping("/delete/{id}")
+	public void delete(@PathVariable int id) {
+		Optional<Announce> announceToDelete = repo.findById(id);
+		Announce newAnnounceToDelte = announceToDelete.get();
+		repo.delete(newAnnounceToDelte);
 	}
 }

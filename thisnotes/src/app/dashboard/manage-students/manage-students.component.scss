@@ -2,21 +2,24 @@ table {
   width: 100%;
 }
 
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
 td,
 th {
-  width: 25%;
+  text-align: center;
 }
 
-.main-table{
-    width: 90%;
-    margin: 2em;
+.main-table {
+  width: 90%;
+  margin: 2em;
 }
 
-.mat-form-field{
-    background-color: #393939;
+i {
+  cursor: pointer;
+}
+
+.loading {
+  text-align: center;
+
+  img {
+    max-width: 80px;
+  }
 }
