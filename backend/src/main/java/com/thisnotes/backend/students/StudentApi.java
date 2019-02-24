@@ -2,13 +2,17 @@ package com.thisnotes.backend.students;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -62,4 +66,33 @@ public class StudentApi {
         return saltStr;
 
     }
+	
+	@CrossOrigin("http://localhost:4200")
+	@DeleteMapping("/delete/{id}")
+	public void delete(@PathVariable int id) {
+		Optional<Student> studentToDelete = repo.findById(id);
+		Student newStudentToDelte = studentToDelete.get();
+		repo.delete(newStudentToDelte);
+	}
+	
+	@CrossOrigin("http://localhost:4200")
+	@PutMapping("/update")
+	public void update(HttpServletRequest req) {
+		String idString = req.getParameter("id");
+		int id = Integer.parseInt(idString);
+		Optional<Student> studentToUpdate = repo.findById(id);
+		Student newStudentToEdit = studentToUpdate.get();
+		
+		String firstName = req.getParameter("firstName");
+		String secondName = req.getParameter("secondName");
+		String level = req.getParameter("level");
+		String grade = req.getParameter("grade");
+		
+		newStudentToEdit.setFirstName(firstName);
+		newStudentToEdit.setLastName(secondName);
+		newStudentToEdit.setLevel(level);
+		newStudentToEdit.setGrade(grade);
+
+		repo.save(newStudentToEdit);
+	}
 }

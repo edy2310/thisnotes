@@ -13,8 +13,8 @@ export class DashboardComponent implements OnInit {
   constructor(private _router:Router, private _cookies:LoggedCookieService) { }
 
   ngOnInit() {
-    //if(!this._cookies.permitCookie())
-    //  this._router.navigateByUrl("/login")
+    if(!this._cookies.permitCookie())
+      this._router.navigateByUrl("/login")
   }
 
   logout(){

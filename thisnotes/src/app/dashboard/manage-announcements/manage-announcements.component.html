@@ -17,7 +17,7 @@
               <td>{{announce.content}}</td>
               <td>{{announce.level}}</td>
               <td>{{announce.grade}}</td>
-              <td><i class="material-icons" style="color: #3378cc;" (click)="update(announce.id)">cached</i></td>
+              <td><i class="material-icons" style="color: #3378cc;" (click)="updateModal(announce)">cached</i></td>
               <td><i class="material-icons" style="color: #c22a2a;" (click)="delete(announce.id)">delete</i></td>
             </tr>
           </table>
@@ -27,3 +27,31 @@
   
     </div>
   </div>
+
+<div class="modal" [ngStyle]="modalStyle">
+
+  <div class="close-modal" (click)="closeModal()">x</div>
+
+  <form class="modal-form">
+    <mat-form-field class="title">
+      <input matInput placeholder="Title" value="{{announceToEditTitle}}" [(ngModel)]="announceToEditTitle" name="announceToEditTitle">
+    </mat-form-field>
+
+    <mat-form-field class="content">
+      <input matInput placeholder="Content" value="{{announceToEditContent}}" [(ngModel)]="announceToEditContent" name="announceToEditContent">
+    </mat-form-field>
+
+    <mat-form-field class="level">
+      <input matInput placeholder="Level" value="{{announceToEditLevel}}" [(ngModel)]="announceToEditLevel" name="announceToEditLevel">
+    </mat-form-field>
+
+    <mat-form-field class="grade">
+      <input matInput placeholder="Grade" value="{{announceToEditGrade}}" [(ngModel)]="announceToEditGrade" name="announceToEditGrade">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="update()">Update</button>
+    <div class="loadingUpdate" *ngIf="loadingUpdate">
+      <img src="/assets/img/loading.gif" alt="Loading">
+    </div>
+  </form>
+</div>

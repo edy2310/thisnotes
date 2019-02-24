@@ -19,8 +19,8 @@
             <td>{{student.level}}</td>
             <td>{{student.grade}}</td>
             <td>{{student.parentKey}}</td>
-            <td><i class="material-icons" style="color: #3378cc;">cached</i></td>
-            <td><i class="material-icons" style="color: #c22a2a;">delete</i></td>
+            <td><i class="material-icons" style="color: #3378cc;" (click)="updateModal(student)">cached</i></td>
+            <td><i class="material-icons" style="color: #c22a2a;" (click)="delete(student.id)">delete</i></td>
           </tr>
         </table>
         <div class="loading" *ngIf="loading">
@@ -28,4 +28,33 @@
         </div>
 
   </div>
+</div>
+
+
+<div class="modal" [ngStyle]="modalStyle">
+
+  <div class="close-modal" (click)="closeModal()">x</div>
+ 
+  <form class="modal-form">
+    <mat-form-field class="fisrtName">
+      <input matInput placeholder="First Name" value="{{studentToEditFirstName}}" [(ngModel)]="studentToEditFirstName" name="studentToEditFirstName">
+    </mat-form-field>
+
+    <mat-form-field class="secondName">
+      <input matInput placeholder="Second Name" value="{{studentToEditSecondName}}" [(ngModel)]="studentToEditSecondName" name="studentToEditSecondName">
+    </mat-form-field>
+
+    <mat-form-field class="level">
+      <input matInput placeholder="Level" value="{{studentToEditLevel}}" [(ngModel)]="studentToEditLevel" name="studentToEditLevel">
+    </mat-form-field>
+
+    <mat-form-field class="grade">
+      <input matInput placeholder="Grade" value="{{studentToEditGrade}}" [(ngModel)]="studentToEditGrade" name="studentToEditGrade">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="update()">Update</button>
+    <div class="loadingUpdate" *ngIf="loadingUpdate">
+      <img src="/assets/img/loading.gif" alt="Loading">
+    </div>
+  </form>
 </div>

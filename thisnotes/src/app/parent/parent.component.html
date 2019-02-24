@@ -1,0 +1,20 @@
+<div class="main-table">
+
+    <div class="mat-elevation-z8">
+        <table>
+            <tr>
+              <th>First Name</th>
+              <th>Second Name</th>
+              <th>Level</th>
+              <th>Grade</th>
+            </tr>
+            <tr *ngFor="let student of allStudents">
+              <td>{{student.firstName}}</td>
+              <td>{{student.lastName}}</td>
+              <td>{{student.level}}</td>
+              <td>{{student.grade}}</td>
+            </tr>
+          </table>
+  
+    </div>
+  </div>

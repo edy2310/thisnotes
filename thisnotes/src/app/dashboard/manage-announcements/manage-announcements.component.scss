@@ -22,3 +22,42 @@ i {
         max-width: 80px;
     }  
 }
+
+.modal {
+  position: fixed;
+  top: 10%;
+  opacity: 0;
+  z-index: -1;
+  background-color: #393939;
+  border-radius: 1em;
+  padding: 3em 4em;
+  transition: 0.5s ease 0s;
+  button{
+    margin-top: 2em;
+  }
+}
+
+.mat-form-field {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 45%;
+  padding: 0 1em;
+  color: white;
+}
+
+.close-modal {
+  color: white;
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.loadingUpdate{
+  margin-top: 1em;
+  img{
+    max-width: 2em;
+  }
+}

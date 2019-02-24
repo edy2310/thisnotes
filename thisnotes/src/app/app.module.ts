@@ -13,6 +13,7 @@ import { CreateAnnounceComponent } from './dashboard/create-announce/create-anno
 import { ManageAnnouncementsComponent } from './dashboard/manage-announcements/manage-announcements.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 
 //Services
 import {LoggedCookieService} from './_services/logged-cookie.service';
@@ -28,6 +29,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HomeComponent } from './home/home.component';
+import { ParentComponent } from './parent/parent.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CreateStudentComponent,
     ManageStudentsComponent,
     CreateAnnounceComponent,
-    ManageAnnouncementsComponent
+    ManageAnnouncementsComponent,
+    HomeComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     CookieService,

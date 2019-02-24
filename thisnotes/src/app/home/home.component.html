@@ -1,0 +1,53 @@
+<div class="main">
+  <div class="main-img">
+    <div class="main-text">
+      Welcome to the parent's "Best School" platform
+    </div>
+    <img src="/assets/img/loginIcon.png" alt="Icon">
+  </div>
+  <div class="main-form">
+    <div class="nav-form">
+      <h2 (click)="showLogin()">Login</h2>
+      <span>or</span>
+      <h2 (click)="showRegister()">Register</h2>
+    </div>
+    <div class="login" [ngStyle]="loginStyle">
+      <span>Login</span>
+      <form (ngSubmit)="login(formLogin)" #formLogin="ngForm">
+        <mat-form-field>
+          <input matInput placeholder="Email" ngModel name="email" class="input-form" autocomplete="off">
+        </mat-form-field>
+      
+        <mat-form-field >
+          <input type="password" matInput placeholder="Password" ngModel name="password" class="input-form">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        <span>{{loginMsg}}</span>
+      </form>
+    </div>
+
+    <div class="register" [ngStyle]="registerStyle">
+      <span>Register</span>
+      <form (ngSubmit)="register(registerform)" #registerform="ngForm">
+        <mat-form-field>
+          <input matInput placeholder="Parent key" ngModel name="parentKey" class="input-form" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Email" ngModel name="email" class="input-form" autocomplete="off">
+        </mat-form-field>
+      
+        <mat-form-field >
+          <input type="password" matInput placeholder="Password" ngModel name="password" class="input-form">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Register
+        </button>
+
+        <span>{{registerMsg}}</span>
+        </form>
+    </div>
+  </div>
+</div>

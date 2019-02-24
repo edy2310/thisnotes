@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -55,10 +54,24 @@ public class AnnouncementsApi {
 	}
 	
 	@CrossOrigin("http://localhost:4200")
-	@PutMapping("/update/{id}")
-	public void update(@PathVariable int id) {
+	@PutMapping("/update")
+	public void update(HttpServletRequest req) {
+		String idString = req.getParameter("id");
+		int id = Integer.parseInt(idString);
 		Optional<Announce> announceToUpdate = repo.findById(id);
 		Announce newAnnounceToEdit = announceToUpdate.get();
+		
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String level = req.getParameter("level");
+		String grade = req.getParameter("grade");
+		
+		newAnnounceToEdit.setTitle(title);
+		newAnnounceToEdit.setContent(content);
+		newAnnounceToEdit.setLevel(level);
+		newAnnounceToEdit.setGrade(grade);
+
+		repo.save(newAnnounceToEdit);
 	}
 	
 	@CrossOrigin("http://localhost:4200")
